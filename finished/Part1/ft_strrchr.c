@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/04 14:26:28 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/04 15:24:07 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = 0;
 	str = (char *)s;
-	while (str[i])
+	while (str[i)
 		i++;
 	while (i + 1 > 0 && str[i] != c)
 		i--;
