@@ -8,7 +8,7 @@ RANLIB = ranlib libft.a
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c $(HEADER) $(SRCS)
+	gcc $(FLAGS) -c -I $(HEADER) $(SRCS)
 	ar rc $(NAME) $(O_FILES)
 	$(RANLIB)
 

@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/01 10:28:32 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/03 12:25:13 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
-char	*ft_strncat(char *dest, const char *src, size_t n);
+int	main(void)
+{
+	// test overlappingmemories memccpy? 
+	char str[] = "HelloWorld";
+	char *a, *b;
+	char c = 'o';
 
+	a = ft_strrchr(str, c);
+	b = strrchr(str, c);
+
+	printf("%s\n", a);
+	printf("%s\n", b);
+
+
+	return (0);
+}

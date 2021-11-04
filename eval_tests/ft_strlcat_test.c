@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/04 14:25:12 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/04 13:05:08 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,21 @@
 int	main(void)
 {
 	// test overlappingmemories memccpy? 
-	char str[] = "Hello'\0'World";
-	char *a, *b;
-	char c = '\0';
+	char str[] = "a potentially long string";
 
-	a = ft_strrchr(str, c);
-	b = strrchr(str, c);
-
-	printf("ft: %s\n", a);
-	printf("std: %s\n", b);
+	char dest[50] = "This is ";
+	char dest2[50] = "This is ";
+	size_t n = 16;
+	//char *a = ft_strlcat(dest, str, n);
+	int a = ft_strlcat(dest, str, n);
+	int b = strlcat(dest2, str, n);
+	
+	printf("ft: %d\n", a);
+	printf("std: %d\n", b);
+	printf("Original string: %s\n", str);
+	printf("ft: %s\n", dest);
+	printf("std: %s\n", dest2);
+	
 
 	return (0);
 }

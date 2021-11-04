@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/04 12:14:56 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/03 14:07:10 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+int	main(void)
 {
-	unsigned int	i;
+	// test overlappingmemories memccpy? 
+	char str[] = "HelloWorld";
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)dest)[i] = ((char *)src)[i];
-		if (((char *)src)[i] == c)
-			return (&dest[i] + 1);
-		i++;
-	}
+	char dest[16] = "Hello";
+	char dest2[16] = "Hello";
+	
+	char *a = ft_strcat(dest, str);
+	char *b = strcat(dest2, str);
+	
+	printf("%s\n", a);
+	printf("%s\n", b);
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/01 11:02:15 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/04 14:46:20 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,10 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+
+// Part 2
+void	*ft_mem
+
+
 
 #endif
