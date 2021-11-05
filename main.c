@@ -13,19 +13,22 @@
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int	main(void)
 {
 	// test overlappingmemories memccpy? 
-	char str[] = "Hello'\0'World";
+	char str[] = "HelloWorld";
 	char *a, *b;
-	char c = '\0';
-
-	a = ft_strrchr(str, c);
-	b = strrchr(str, c);
-
+	
+	a = ft_strdup(str);
+	b = strdup(str);
+	
 	printf("ft: %s\n", a);
 	printf("std: %s\n", b);
+	printf("ftlen: %d\n", ft_strlen(a));
+	printf("stdlen: %d\n", ft_strlen(b));
+	
 
 	return (0);
 }
