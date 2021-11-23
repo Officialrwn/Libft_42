@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 13:26:52 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/18 11:58:12 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/19 10:10:38 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/22 13:01:11 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	unsigned int	i;
+	t_list	*head;
+	t_list	*temp;
 
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (0);
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	temp = ft_lstnew((*f)(lst)->content, (*f)(lst)->content_size);
+	if (!temp)
+		return (NULL);
+	head = temp;
+	while (lst->next != NULL)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		lst = lst->next;
+		temp->next = ft_lstnew((*f)(lst)->content, (*f)(lst)->content_size);
+		if (!temp->next)
+			return (NULL);
+		temp = temp->next;
 	}
-	return (1);
+	return (head);
 }

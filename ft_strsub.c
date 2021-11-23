@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:46:34 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/15 11:55:47 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/22 15:23:58 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strsub(const char *s, unsigned int start, size_t len)
 	arr = ft_strnew(len);
 	if (!arr || s == NULL)
 		return (NULL);
-	while (len-- && s[start] != '\0' && ft_strlen(s) > start)
+	while (len--)
 	{
 		arr[i] = s[start];
 		i++;

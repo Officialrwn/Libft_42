@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/17 13:59:41 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/23 18:10:18 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,29 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+
+typedef struct s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
+
+typedef struct s_dlist
+{
+	void			*content;
+	size_t			content_size;
+	struct s_dlist	*previous;
+	struct s_dlist	*next;
+}					t_dlist;
+
+typedef struct int_var
+{
+	int	i;
+	int	j;
+	int	x;
+	int	count;
+}				t_var;
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
@@ -74,13 +97,6 @@ void	ft_putstr_fd(const char *s, int fd);
 void	ft_putendl_fd(const char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-typedef struct s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -88,12 +104,13 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-typedef struct int_var
-{
-	int	i;
-	int	j;
-	int	x;
-	int	count;
-}	t_var;
+void	ft_lstaddend(t_list **alst, t_list *new);
+void	ft_lstdelend(t_list **alst, void (*del)(void *, size_t));
+
+int		ft_lstsize(t_list **lst);
+t_dlist	*ft_dlstnew(void const *content, size_t content_size);
+void	ft_dlstdelfront(t_dlist **alst, void (*del)(void *, size_t));
+void	ft_dlstaddend(t_dlist **alst, t_dlist *new);
+void	ft_dlstaddfront(t_dlist **alst, t_dlist *new);
 
 #endif
