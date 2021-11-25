@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_listtest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:07:07 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/23 18:05:36 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/24 09:36:30 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void	ft_printflistcontents(t_dlist **alst)
 {
@@ -30,6 +31,7 @@ void	ft_printflistcontents(t_dlist **alst)
 
 int	main(void)
 {
+	/*
 	t_dlist **ptr;
 	t_dlist	*alst;
 	t_dlist	*arr0 = ft_dlstnew("2irst", 6);
@@ -54,6 +56,6 @@ int	main(void)
 	ft_printflistcontents(ptr);
 	//printf("alst  is  %p\n", alst);
 	
-	printf("arr1 previous is now %p\n", arr1->previous);
+	printf("arr1 previous is now %p\n", arr1->previous);*/
 
 }

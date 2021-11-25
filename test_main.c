@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/24 09:19:34 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/24 12:43:13 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/24 12:48:12 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-void	ft_bzero(void *s, size_t n)
+int main ()
 {
-	unsigned int	i;
-
-	i = 0;
-	while ( i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
+	char *i = ft_memalloc(5);
+	printf("%c\n", i[0]);
 }
