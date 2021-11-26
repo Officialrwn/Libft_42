@@ -14,11 +14,16 @@
 # define EOLHEADER() printf("\n")
 
 # define iTESTOK(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %d std: %d	\033[32m[OK]\033[0m\n", fn, n, ft, libc)
-# define cTESTOK(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %c std: %c	\033[32m[OK]\033[0m\n", fn, n, ft, libc)
-# define sTESTOK(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %s std: %s	\033[32m[OK]\033[0m\n", fn, n, ft, libc)
 # define iTESTFAIL(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %d std: %d \033[1;31m[FAIL] < [!]\033[0m\n",fn , n, ft, libc)
-# define cTESTFAIL(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %c std: %c \033[1;31m[FAIL] < [!]\033[0m\n",fn, n, ft, libc)
+
+# define sTESTOK(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %s std: %s	\033[32m[OK]\033[0m\n", fn, n, ft, libc)
 # define sTESTFAIL(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %s std: %s \033[1;31m[FAIL] < [!]\033[0m\n",fn, n, ft, libc)
+
+# define cTESTOK(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %c std: %c	\033[32m[OK]\033[0m\n", fn, n, ft, libc)
+# define cTESTFAIL(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %c std: %c \033[1;31m[FAIL] < [!]\033[0m\n",fn, n, ft, libc)
+
+# define pTESTOK(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %p std: %p	\033[32m[OK]\033[0m\n", fn, n, ft, libc)
+# define pTESTFAIL(fn, n, ft, libc) printf("\033[33m[%s]\033[0m[test #%d] ft: %p std: %p \033[1;31m[FAIL] < [!]\033[0m\n",fn, n, ft, libc)
 
 void yellow() {
 	printf("\033[33m");

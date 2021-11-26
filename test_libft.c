@@ -464,19 +464,20 @@ void	test_memchr(void)
 	if (PRINTSUCCESS == 1)
 			FNHEADER(testname);
 	int count = 0;
-	int len = 3;
-	char *arr[] = { "Helloworld", "JellycWorld", "    memccpy basic test" };
-	char i[4][30] = { "world", "cWorld", "   basic test" };
-	char ii[4][30] = { "world", "cWorld", "   basic test" };
+	int len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "  this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	unsigned char c = 'c';
+	size_t size = 8;
 	
 	for (int num = 0; num < len; num++)
 	{
-		ft_memcpy(i[num], arr[num], 8);
-		memcpy(ii[num], arr[num], 8);
-		if (strcmp(i[num], ii[num]) == 0)
+		void *i = ft_memchr(arr[num], c, size);
+		void *ii = memchr(arr[num], c, size);
+		if (i == ii)
 			count++;
 		else
-			sTESTFAIL(testname, num, i[num], ii[num]);
+			pTESTFAIL(testname, num, i, ii);
 	}
 	if (count == len)
 		TESTOK(testname, count, len);
@@ -484,6 +485,180 @@ void	test_memchr(void)
 		TESTFAIL(testname, count, len);
 }
 
+void	test_memcmp()
+{
+	char *testname = "ft_memcmp";
+	int count = 0;
+	int len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "   this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	char arr2[7][50] = { "Helloworld", "HellycWorld", " \tthis is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0f hidden" };
+	size_t size = 8;
+	
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_memcmp(arr[num], arr2[num], size);
+		int ii = memcmp(arr[num], arr2[num], size);
+		if (i == ii || (i > 0 && ii > 0) || (i < 0 && ii < 0))
+			count++;
+		else
+			iTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strncmp()
+{
+	char *testname = "ft_strncmp";
+	int count = 0;
+	int len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "   this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	char arr2[7][50] = { "Helloworld", "HellycWorld", " \tthis is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0f hidden" };
+	size_t size = 8;
+	
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_strncmp(arr[num], arr2[num], size);
+		int ii = strncmp(arr[num], arr2[num], size);
+		if (i == ii || (i > 0 && ii > 0) || (i < 0 && ii < 0))
+			count++;
+		else
+			iTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strcmp()
+{
+	char *testname = "ft_strcmp";
+	int count = 0;
+	int len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "   this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	char arr2[7][50] = { "Helloworld", "HellycWorld", " \tthis is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0f hidden" };
+	
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_strcmp(arr[num], arr2[num]);
+		int ii = strcmp(arr[num], arr2[num]);
+		if (i == ii || (i > 0 && ii > 0) || (i < 0 && ii < 0))
+			count++;
+		else
+			iTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strequ()
+{
+	char *testname = "ft_strequ";
+	int count = 0;
+	int len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "   this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	char arr2[7][50] = { "Helloworld", "HellycWorld", " \tthis is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0f hidden" };
+	int arri[7] = { 1, 0, 0, 1, 1, 1, 1};
+	int ii[7];
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_strequ(arr[num], arr2[num]);
+		ii[num] = arri[num];
+		if (i == ii[num])
+			count++;
+		else
+			iTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strnequ()
+{
+	char *testname = "ft_strnequ";
+	int count = 0;
+	int len = 7;
+	size_t size = 8;
+	
+	char arr[7][50] = { "Helloworld", "JellycWorld", "   this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	char arr2[7][50] = { "Helloworld", "HellycWorld", " \tthis is a basic test", "", "What are you loaaaoking for?"
+					, "random strings && c symbols", "Hello\0f hidden" };
+	
+	int arri[7] = { 1, 0, 0, 1, 1, 1, 1};
+	int ii[7];
+	
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_strnequ(arr[num], arr2[num], size);
+		ii[num] = arri[num];
+		if (i == ii[num])
+			count++;
+		else
+			iTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_tolower()
+{
+	char *testname = "ft_tolower";
+	int count = 0;
+	int len = 16;
+	char arr[] = "!$#HELLOWORLD$@!";
+	char *ii = "!$#helloworld$@!";
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_tolower(arr[num]);
+		if (i == ii[num])
+			count++;
+		else
+			cTESTFAIL(testname, num, i, ii[num]);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_toupper()
+{
+	char *testname = "ft_toupper";
+	int count = 0;
+	int len = 16;
+	char arr[] = "!$#helloworld$@!";
+	char *ii = "!$#HELLOWORLD$@!";
+	for (int num = 0; num < len; num++)
+	{
+		int i = ft_toupper(arr[num]);
+		if (i == ii[num])
+			count++;
+		else
+			cTESTFAIL(testname, num, i, ii[num]);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
 
 
 int	main(void)
@@ -500,17 +675,42 @@ int	main(void)
 	test_memalloc();
 	test_memccpy();
 	test_memcpy();
-	/*
-	
 	test_memchr();
 	test_memcmp();
-	test_memdel();
+	test_strncmp();
+	test_strcmp();
+	test_strequ();
+	test_strnequ();
+	test_tolower();
+	test_toupper();
+
+	/*
 	test_memmove();
 	test_memset();
 	
-	test_tolower();
-	test_toupper();
-	
+	test_strcat();
+	test_strchr();
+	test_strclr();
+	test_strcpy();
+	test_strdup();
+	test_striter();
+	test_striteri();
+	test_strjoin();
+	test_strlcat();
+	test_strlen();
+	test_strmap();
+	test_strmapi();
+	test_strncat();
+	test_strncpy();
+	test_strnew();
+	test_strnstr();
+	test_strrchr();
+	test_strsplit();
+	test_strstr();
+	test_strsub();
+	test_strtrim();
+
+
 	test_putchar_fd();
 	test_putchar();
 	test_putendl_fd();
@@ -520,34 +720,9 @@ int	main(void)
 	test_putstr_fd();
 	test_putstr();
 	
-	test_strcat();
-	test_strchr();
-	test_strclr();
-	test_strcmp();
-	test_strcpy();
-	test_strdel();
-	test_strdup();
-	test_strequ();
-	test_striter();
-	test_striteri();
-	test_strjoin();
-	test_strlcat();
-	test_strlen();
-	test_strmap();
-	test_strmapi();
-	test_strncat();
-	test_strncmp();
-	test_strncpy();
-	test_strnequ();
-	test_strnew();
-	test_strnstr();
-	test_strrchr();
-	test_strsplit();
-	test_strstr();
-	test_strsub();
-	test_strtrim();
-
+	bonuses.
 	*/
+
 
 	return (0);
 }
