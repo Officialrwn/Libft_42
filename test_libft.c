@@ -341,7 +341,7 @@ void	test_itoa(void)
 			FNHEADER(testname);
 	int count = 0;
 
-	int arr[13][1] = { 
+	int arr[13] = { 
 		123456789,  		//0
 		-123456789, 		//1
 		+123456789, 		//2
@@ -357,7 +357,7 @@ void	test_itoa(void)
 		iminint1,			//12
 		};
 	
-	char ii[13][20];
+	char ii[13];
 	int len = 13;
 	
 	for (int num = 0; num < len; num++)
