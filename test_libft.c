@@ -549,19 +549,5 @@ int	main(void)
 
 	*/
 
-	char *str = "Helloa";
-	
-	while(*str++)
-	{
-		if (*str == 'a')
-			printf("finds a");
-	}
-
-	while(str[i++])
-	{
-		if (str[i] == 'a')
-			printf("finds a");
-	}
-
 	return (0);
 }
