@@ -357,13 +357,13 @@ void	test_itoa(void)
 		iminint1,			//12
 		};
 	
-	char ii[13];
+	char ii[13][30];
 	int len = 13;
 	
 	for (int num = 0; num < len; num++)
 	{
-		char *i = ft_itoa(*arr[num]);
-		sprintf(ii[num], "%d", *arr[num]);
+		char *i = ft_itoa(arr[num]);
+		sprintf(ii[num], "%d", arr[num]);
 		if (strcmp(i, ii[num]) == 0)
 		{
 			count++;
