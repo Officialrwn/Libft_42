@@ -660,6 +660,142 @@ void	test_toupper()
 		TESTFAIL(testname, count, len);
 }
 
+void	test_memmove(void)
+{
+	char *testname = "ft_memmove";
+	int count = 0, len = 5;
+	
+	char arr[5][30] = { "Helloworld", "JellycWorld", "    memccpy basic test", "HelloWorld", "" };
+	char arr2[5][30] = { "Helloworld", "JellycWorld", "    memccpy basic test", "HelloWorld", "" };
+	char *i, *ii;
+	
+	for (int num = 0; num < len; num++)
+	{
+		i = ft_memmove(arr[num] + 3, arr[num] + 0, 6);
+		ii = memmove(arr2[num] + 3, arr2[num] + 0, 6);
+		if (strcmp(i, ii) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	for (int num = 0; num < len; num++)
+	{
+		i = ft_memmove(arr[num] + 2, arr[num] + 4, 6);
+		ii = memmove(arr2[num] + 2, arr2[num] + 4, 6);
+		if (strcmp(i, ii) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	if (count == 10)
+		TESTOK(testname, count, 10);
+	else
+		TESTFAIL(testname, count, 10);
+}
+
+void	test_memset()
+{
+	char *testname = "ft_memset";
+	int len = 5, count = 0;
+	
+	char arr[5][30] = { "Helloworld", "JellycWorld", "    memccpy basic test", "HelloWorld", "" };
+	char arr2[5][30] = { "Helloworld", "JellycWorld", "    memccpy basic test", "HelloWorld", "" };
+	char *i, *ii;
+	char c = 'c', zero = '\0';
+	
+	for (int num = 0; num < len; num++)
+	{
+		i = ft_memset(arr[num], c, 6);
+		ii = memset(arr2[num], c, 6);
+		if (strcmp(i, ii) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	for (int num = 0; num < len; num++)
+	{
+		i = ft_memset(arr[num], zero, 6);
+		ii = memset(arr2[num], zero, 6);
+		if (memcmp(i, ii, 8) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	if (count == 10)
+		TESTOK(testname, count, 10);
+	else
+		TESTFAIL(testname, count, 10);
+}
+
+void	test_strcat()
+{
+	char *testname = "ft_strcat";
+	int count = 0, len = 2;
+	char *src = "World";
+	char arr[11] = "Hello", arr2[11] = "Hello";
+
+	char *i = ft_strcat(arr, src);
+	char *ii = strcat(arr2, src);
+
+	if (strcmp(i, ii) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 0, i, ii);
+	
+	if (i[strlen(i)] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 1, i, '\0');
+	
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strchr(void)
+{
+	char *testname = "ft_strchr";
+	int count = 0, len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "  this is a basic test", "", "What are you looking for?"
+					, "random strings && c symbols", "Hello\0c hidden" };
+	unsigned char c = 'c';
+	
+	for (int num = 0; num < len; num++)
+	{
+		char *i = ft_strchr(arr[num], c);
+		char *ii = strchr(arr[num], c);
+		if (i == ii)
+			count++;
+		else
+			pTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strclr(void)
+{
+	char *testname = "ft_strclr";
+	int count = 0, len = 10;
+	char ii = '\0';
+	char i[] = "HelloWorld";
+	ft_strclr(i);
+	
+	for (int num = 0; num < len; num++)
+	{
+		if (i[num] == ii)
+			count++;
+		else
+			cTESTFAIL(testname, num, i[num], ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
 
 int	main(void)
 {
@@ -683,14 +819,14 @@ int	main(void)
 	test_strnequ();
 	test_tolower();
 	test_toupper();
-
-	/*
 	test_memmove();
 	test_memset();
-	
 	test_strcat();
 	test_strchr();
 	test_strclr();
+
+	/*
+	
 	test_strcpy();
 	test_strdup();
 	test_striter();
