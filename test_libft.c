@@ -731,9 +731,9 @@ void	test_memset()
 void	test_strcat()
 {
 	char *testname = "ft_strcat";
-	int count = 0, len = 2;
-	char *src = "World";
-	char arr[11] = "Hello", arr2[11] = "Hello";
+	int count = 0, len = 8;
+	char *src = "World", *src2 = "";
+	char arr[11] = "Hello", arr2[11] = "Hello", arr3[11] = "", arr4[11] = "";
 
 	char *i = ft_strcat(arr, src);
 	char *ii = strcat(arr2, src);
@@ -746,8 +746,43 @@ void	test_strcat()
 	if (i[strlen(i)] == '\0')
 		count++;
 	else
-		cTESTFAIL(testname, 1, i[strlen(i)], '\0');
-	
+		cTESTFAIL(testname, 1, i[strlen(i)], '0');
+
+	i = ft_strcat(arr3, src2);
+	ii = strcat(arr4, src2);
+	if (strcmp(i, ii) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 2, i, ii);
+	if (i[strlen(i)] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 3, i[strlen(i)], '0');
+
+	i = ft_strcat(arr3, src);
+	ii = strcat(arr4, src);
+	if (strcmp(i, ii) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 4, i, ii);
+		
+	if (i[strlen(i)] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 5, i[strlen(i)], '0');
+
+	i = ft_strcat(arr, src2);
+	ii = strcat(arr2, src2);
+	if (strcmp(i, ii) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 5, i, ii);
+		
+	if (i[strlen(i)] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 6, i[strlen(i)], '0');
+
 	if (count == len)
 		TESTOK(testname, count, len);
 	else
@@ -931,6 +966,120 @@ void	test_strnew(void)
 		TESTFAIL(testname, count, len);
 }
 
+void	test_strjoin(void)
+{
+	char *testname = "ft_strjoin";
+	int count = 0, len = 4;
+	char *arr = "Hello", *arr2 = "World", *arr3 = "", *arr4 = "";
+	char *i = ft_strjoin(arr, arr2);
+	char *ii = "HelloWorld";
+	if (strcmp(i, ii) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 0, i, ii);
+	if (i[10] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 1, i[10], '0');
+		
+	i = ft_strjoin(arr3, arr4);
+	if (strcmp(i, "") == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 2, i, "");
+	if (i[0] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 3, i[0], '0');
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strlcat()
+{
+	char *testname = "ft_strlcat";
+	int count = 0, len = 6, buf = 20;
+	char *src = "World!!!", *src2 = "ExtraCharacters to add";
+	char arr[20] = "Hello", arr2[20] = "HelloWorld!!!";
+
+	size_t i = ft_strlcat(arr, src, buf);
+	size_t ii = 13;
+
+	if (strcmp(arr, arr2) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 0, arr, arr2);
+	if (i == 13)
+		count++;
+	else	
+		iTESTFAIL(testname, 1, i, ii);
+	if (arr[13] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 2, arr[13], '0');
+	size_t n = ft_strlcat(arr, src2, buf);
+	if (strcmp(arr, "HelloWorld!!!ExtraC") == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 3, arr, "HelloWorld!!!ExtraC");
+	if (arr[19] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 4, arr[19], '0');
+	if (n == 35)
+		count++;
+	else
+		iTESTFAIL(testname, 5, n, 35);
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strncat(void)
+{
+	char *testname = "ft_strncat";
+	int count = 0, len = 6;
+	char *src = "World", *src2 = "";
+	char arr[9] = "Hello", ii[9] = "HelloWor", dest[9] = "";
+	char *i = ft_strncat(arr, src, 3);
+	if (strcmp(i, ii) == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 0, i, ii);
+	if (i[8] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 1, i[8], '0');
+	
+	i = ft_strncat(dest, src, 4);
+	if (strcmp(i, "Worl") == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 2, i, "Worl");
+	if (i[5] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 3, i[5], '0');
+	
+	i = ft_strncat(ii, src2, 3);
+	if (strcmp(i, "HelloWor") == 0)
+		count++;
+	else
+		sTESTFAIL(testname, 4, i, "HelloWor");
+	if (i[8] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, 5, i[5], '0');
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
 int	main(void)
 {
 	
@@ -963,12 +1112,12 @@ int	main(void)
 	test_strlen();
 	test_strncpy();
 	test_strnew();
-
-
-	/*
 	test_strjoin();
 	test_strlcat();
 	test_strncat();
+
+
+	/*
 	test_strrchr();
 	test_strstr();
 	test_strnstr();
