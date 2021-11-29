@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdbool.h>
 
 char 		cmaxint[] = "2147483647";
 char 		cminint[] = "-2147483648";
@@ -797,6 +798,139 @@ void	test_strclr(void)
 		TESTFAIL(testname, count, len);
 }
 
+void	test_strcpy(void)
+{
+	char *testname = "ft_strcpy";
+	int count = 0, len = 5;
+	char *src[] = { "HelloWorld", "Hello\0World", "", "Welp" };
+	char arr[30], arr2[30];
+	char *i, *ii;
+	for (int num = 0; num < len - 1; num++)
+	{
+		i = ft_strcpy(arr, src[num]);
+		ii = strcpy(arr2, src[num]);
+		if (strcmp(i, ii) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	if (i[strlen(i)] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, len, i[strlen(i)], '0');
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strdup(void)
+{
+	char *testname = "ft_strdup";
+	int count = 0, len = 5;
+	char *src[] = { "HelloWorld", "Hello\0World", "", "Welp" };
+	char *i, *ii;
+	for (int num = 0; num < len - 1; num++)
+	{
+		i = ft_strdup(src[num]);
+		ii = strdup(src[num]);
+		if (strcmp(i, ii) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	if (i[strlen(i)] == '\0')
+		count++;
+	else
+		cTESTFAIL(testname, len, i[strlen(i)], '0');
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strlen(void)
+{
+	char *testname = "ft_strlen";
+	int count = 0, len = 4;
+	char *src[] = { "HelloWorld", "Hello\0World", "", "Welp" };
+	size_t i, ii;
+	for (int num = 0; num < len; num++)
+	{
+		i = ft_strlen(src[num]);
+		ii = strlen(src[num]);
+		if (i == ii)
+			count++;
+		else
+			iTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strncpy(void)
+{
+	char *testname = "ft_strncpy";
+	int count = 0, len = 4;
+	char *src[] = { "HelloWorld", "", "Hello\0World", "Welp" };
+	char arr[13], arr2[13];
+	char *i, *ii;
+	//Test0
+	i = ft_strncpy(arr, src[0], 8);
+	ii = strncpy(arr2, src[0], 8);
+	if ((strcmp(i, ii) != 0) && i[strlen(i) != '\0'])
+		count++;
+	else
+		sTESTFAIL(testname, 0, i, ii);
+	
+	for (int j = 1; j < len; j++)
+	{
+		i = ft_strncpy(arr, src[j], 11);
+		ii = strncpy(arr2, src[j], 11);
+		bool isEqual = 1;
+		for (int n = 0; n < 11; n++)
+		{
+			if (strcmp(i, ii) == 0)
+				isEqual = 0;
+		}
+		if (isEqual = 1)
+			count++;
+		else
+			sTESTFAIL(testname, j, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strnew(void)
+{
+	char *testname = "ft_strnew";
+	int count = 0, len = 12;
+	char *i = ft_strnew(10);
+	char ii = '\0';
+	if (i != NULL)
+		count++;
+	else
+		sTESTFAIL(testname, 0, i, "Allocation failed");
+	for (int num = 0; num < 11; num++)
+	{
+		if (i[num] == ii)
+			count++;
+		else
+			cTESTFAIL(testname, num, i[num], '0');
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
 int	main(void)
 {
 	
@@ -824,27 +958,29 @@ int	main(void)
 	test_strcat();
 	test_strchr();
 	test_strclr();
-
-	/*
-	
 	test_strcpy();
 	test_strdup();
-	test_striter();
-	test_striteri();
-	test_strjoin();
-	test_strlcat();
 	test_strlen();
-	test_strmap();
-	test_strmapi();
-	test_strncat();
 	test_strncpy();
 	test_strnew();
-	test_strnstr();
+
+	/*
+	test_strjoin();
+	test_strlcat();
+	test_strncat();
 	test_strrchr();
-	test_strsplit();
 	test_strstr();
+	test_strnstr();
+
+	test_strmap();
+	test_strmapi();
+	
+	test_striter();
+	test_striteri();
+	
 	test_strsub();
 	test_strtrim();
+	test_strsplit();
 
 
 	test_putchar_fd();
