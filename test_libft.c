@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/29 12:13:29 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/29 15:46:33 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -448,7 +448,7 @@ void	test_memcpy(void)
 	{
 		ft_memcpy(i[num], arr[num], 8);
 		memcpy(ii[num], arr[num], 8);
-		if (strcmp(i[num], ii[num]) != 0)
+		if (strcmp(i[num], ii[num]) == 0)
 			count++;
 		else
 			sTESTFAIL(testname, num, i[num], ii[num]);
@@ -964,6 +964,7 @@ int	main(void)
 	test_strncpy();
 	test_strnew();
 
+
 	/*
 	test_strjoin();
 	test_strlcat();
@@ -994,7 +995,7 @@ int	main(void)
 	
 	bonuses.
 	*/
-
+	// -I. libft_tests.h libft.h
 
 	return (0);
 }
