@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/25 14:48:10 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/29 12:13:29 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -448,7 +448,7 @@ void	test_memcpy(void)
 	{
 		ft_memcpy(i[num], arr[num], 8);
 		memcpy(ii[num], arr[num], 8);
-		if (strcmp(i[num], ii[num]) == 0)
+		if (strcmp(i[num], ii[num]) != 0)
 			count++;
 		else
 			sTESTFAIL(testname, num, i[num], ii[num]);
@@ -581,7 +581,7 @@ void	test_strequ()
 		if (i == ii[num])
 			count++;
 		else
-			iTESTFAIL(testname, num, i, ii);
+			iTESTFAIL(testname, num, i, ii[num]);
 	}
 	if (count == len)
 		TESTOK(testname, count, len);
@@ -611,7 +611,7 @@ void	test_strnequ()
 		if (i == ii[num])
 			count++;
 		else
-			iTESTFAIL(testname, num, i, ii);
+			iTESTFAIL(testname, num, i, ii[num]);
 	}
 	if (count == len)
 		TESTOK(testname, count, len);
@@ -746,7 +746,7 @@ void	test_strcat()
 	if (i[strlen(i)] == '\0')
 		count++;
 	else
-		cTESTFAIL(testname, 1, i, '\0');
+		cTESTFAIL(testname, 1, i[strlen(i)], '\0');
 	
 	if (count == len)
 		TESTOK(testname, count, len);
@@ -856,7 +856,7 @@ void	test_strlen(void)
 	char *testname = "ft_strlen";
 	int count = 0, len = 4;
 	char *src[] = { "HelloWorld", "Hello\0World", "", "Welp" };
-	size_t i, ii;
+	int i, ii;
 	for (int num = 0; num < len; num++)
 	{
 		i = ft_strlen(src[num]);
@@ -879,14 +879,14 @@ void	test_strncpy(void)
 	char *src[] = { "HelloWorld", "", "Hello\0World", "Welp" };
 	char arr[13], arr2[13];
 	char *i, *ii;
-	//Test0
+	//Test 0
 	i = ft_strncpy(arr, src[0], 8);
 	ii = strncpy(arr2, src[0], 8);
 	if ((strcmp(i, ii) != 0) && i[strlen(i) != '\0'])
 		count++;
 	else
 		sTESTFAIL(testname, 0, i, ii);
-	
+	//Test 1-3
 	for (int j = 1; j < len; j++)
 	{
 		i = ft_strncpy(arr, src[j], 11);
@@ -894,10 +894,10 @@ void	test_strncpy(void)
 		bool isEqual = 1;
 		for (int n = 0; n < 11; n++)
 		{
-			if (strcmp(i, ii) == 0)
+			if (strcmp(i, ii) != 0)
 				isEqual = 0;
 		}
-		if (isEqual = 1)
+		if (isEqual == 1)
 			count++;
 		else
 			sTESTFAIL(testname, j, i, ii);
