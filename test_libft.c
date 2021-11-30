@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/29 15:46:33 by leotran          ###   ########.fr       */
+/*   Updated: 2021/11/30 16:34:04 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1014,7 +1014,7 @@ void	test_strlcat()
 	if (i == 13)
 		count++;
 	else	
-		iTESTFAIL(testname, 1, i, ii);
+		iTESTFAIL(testname, 1, (int)i, (int)ii);
 	if (arr[13] == '\0')
 		count++;
 	else
@@ -1031,7 +1031,7 @@ void	test_strlcat()
 	if (n == 35)
 		count++;
 	else
-		iTESTFAIL(testname, 5, n, 35);
+		iTESTFAIL(testname, 5, (int)n, 35);
 	if (count == len)
 		TESTOK(testname, count, len);
 	else
@@ -1080,6 +1080,393 @@ void	test_strncat(void)
 		TESTFAIL(testname, count, len);
 }
 
+void	test_strrchr(void)
+{
+	char *testname = "ft_strrchr";
+	int count = 0, len = 7;
+	char arr[7][50] = { "Helloworld", "JellycWorld", "  thisc is a basic test", "", "What are you looking for?"
+					, "randocm strings && c symbols", "Hello\0c hidden" };
+	unsigned char c = 'c';
+	
+	for (int num = 0; num < len; num++)
+	{
+		char *i = ft_strchr(arr[num], c);
+		char *ii = strchr(arr[num], c);
+		if (i == ii)
+			count++;
+		else
+			pTESTFAIL(testname, num, i, ii);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+/// FIX
+void	test_strstr(void)
+{
+	char *testname = "ft_strstr";
+	int count = 0, len = 30;
+	char arr[10][50] = { "HelloWorld", "JellycWorld", "  thisc is a basic test", "", "What are you looking for?"
+					, "randocm strings && c symbols", "Hello\0c hidden", "WorlHelloWorld", "worldWorlD", "WorlWorld" };
+	char *needle = "World", *needle2 = "HelloWorld", *needle3 = "";
+	char *i, *ii;
+	int j = 11, k = 21;
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strstr(arr[num], needle);
+		ii = strstr(arr[num], needle);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strstr(arr[num], needle2);
+		ii = strstr(arr[num], needle2);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num + j, i, ii);
+	}
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strstr(arr[num], needle3);
+		ii = strstr(arr[num], needle3);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num + k, i, ii);
+	}	
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strnstr(void)
+{
+	char *testname = "ft_strnstr";
+	int count = 0, len = 40;
+	char arr[10][50] = { "HelloWorld", "JellycWorld", "  thisc is a basic test", "", "What are you looking for?"
+					, "randocm strings && c symbols", "Hello\0c hidden", "WorlHelloWorld", "worldWorlD", "WorlWorld" };
+	char *needle = "World", *needle2 = "HelloWorld", *needle3 = "";
+	size_t size = 7, size1 = 15, size2 = 0;
+	char *i, *ii;
+	int j = 11, k = 21, l = 31;
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strnstr(arr[num], needle, size);
+		ii = strnstr(arr[num], needle, size);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num, i, ii);
+	}
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strnstr(arr[num], needle2, size1);
+		ii = strnstr(arr[num], needle2, size1);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num + j, i, ii);
+	}
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strnstr(arr[num], needle3, size);
+		ii = strnstr(arr[num], needle3, size);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num + k, i, ii);
+	}
+	for (int num = 0; num < 10; num++)
+	{
+		i = ft_strnstr(arr[num], needle, size2);
+		ii = strnstr(arr[num], needle, size2);
+		if (i == ii)
+			count++;
+		else
+			sTESTFAIL(testname, num + l, i, ii);
+	}	
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+static char ft_tolower2(char c)
+{
+	return (ft_tolower(c));
+}
+
+void	test_strmap(void)
+{
+	char *testname = "ft_strmap";
+	int count = 0, len = 6;
+	char *i;
+	char arr[6][30] = { "", "HELLOWORLD", "TeStInG", "1231,s$@$Does it work"
+						, "HIDDEN\0MEANING", "testworld" };
+	char ii[6][30] = { "", "helloworld", "testing", "1231,s$@$does it work"
+						, "hidden\0MEANING", "testworld" };
+	for (int n = 0; n < 6; n++)
+	{
+		i = ft_strmap(arr[n], &ft_tolower2);
+		if (strcmp(i, ii[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n, i, ii[n]);
+	}
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+static char ft_toupper2(unsigned i, char c)
+{
+	if (i % 2 == 0)
+		return (ft_toupper(c));
+	else
+		return (ft_tolower(c));
+	return (c);
+}
+
+void	test_strmapi(void)
+{
+	char *testname = "ft_strmapi";
+	int count = 0, len = 6;
+	char *i;
+	char arr[6][30] = { "", "HELLOWORLD", "TeStInG", "1231,s$@$Does it work"
+						, "HIDDEN\0MEANING", "testworld" };
+	char ii[6][30] = { "", "HeLlOwOrLd", "TeStInG", "1231,s$@$dOeS It wOrK"
+						, "HiDdEn\0MEANING", "TeStWoRlD" };
+	for (int n = 0; n < 6; n++)
+	{
+		i = ft_strmapi(arr[n], &ft_toupper2);
+		if (strcmp(i, ii[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n, i, ii[n]);
+	}
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+static void ft_incrementvalue(char *str)
+{
+	while(*str)
+	{
+		if (ft_isalpha(*str))
+			*str += 1;
+		str++;
+	}
+}
+
+void	test_striter(void)
+{
+	char *testname = "ft_striter";
+	int count = 0, len = 6;
+	char *i;
+	char arr[6][30] = { "", "HELLOWORLD", "TeStInG", "1231,s$@$Does it work"
+						, "HIDDEN\0MEANING", "testworld" };
+	char ii[6][30] = { "", "IGOPT[VZUN", "UgVxNtN", "1231,y$@$Nzq{ x{ {{{{"
+						, "IKGHJT\0MEANING", "ugvx{uytm" };
+	
+	
+	for (int n = 0; n < 6; n++)
+	{
+		ft_striter(arr[n], &ft_incrementvalue);
+		if (strcmp(arr[n], ii[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n, arr[n], ii[n]);
+	}
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+static void ft_decrementvalue(unsigned i, char *str)
+{
+	if (i % 2 == 0)
+	{
+		while(*str)
+		{
+			if (ft_isalpha(*str))
+				*str += 1;
+			str++;
+		}
+	}
+}
+
+
+void	test_striteri(void)
+{
+	char *testname = "ft_striteri";
+	int count = 0, len = 6;
+	char *i;
+	char arr[6][30] = { "", "HELLOWORLD", "TeStInG", "1231,s$@$Does it work"
+						, "HIDDEN\0MEANING", "testworld" };
+	char ii[6][30] = { "", "IFNNRZSVQI", "UfUvLqK", "1231,v$@$Iukz q{ {y{v"
+						, "IJFFHQ\0MEANING", "ufuvzrvpi" };
+	
+	
+	for (int n = 0; n < 6; n++)
+	{
+		ft_striteri(arr[n], &ft_decrementvalue);
+		if (strcmp(arr[n], ii[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n, arr[n], ii[n]);
+	}
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strsub(void)
+{
+	char *testname = "ft_strsub";
+	int count = 0, len = 12, j = 7;
+	char *i;
+	char arr[6][30] = { "", "HELLOWORLD", "TeStInG", "1231,\0s$@$Does it work"
+						, "HIDD\0ENMEANING", "testworld" };
+	char ii[6][30] = { "", "LOWOR", "tInG", "1,"
+						, "D", "tworl" };
+	char arr2[6][30] = { "", "WORLD", "nG", ""
+						, "ENMEANIN", "orld" };
+	
+	for (int n = 0; n < 6; n++)
+	{
+		i = ft_strsub(arr[n], 3, 5);
+		if (strcmp(i, ii[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n, i, ii[n]);
+	}
+	for (int n = 0; n < 6; n++)
+	{
+		i = ft_strsub(arr[n], 5, 8);
+		if (strcmp(i, arr2[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n + j, i, arr2[n]);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strtrim(void)
+{
+	char *testname = "ft_strtrim";
+	int count = 0, len = 7;
+	char *i;
+	char arr[7][50] = { "", "    HELLOWORLD", "TeStInG      ", "  \t 12 \t 31,\ts$@$Does it work\t\t   "
+						, "     HIDD\0ENMEANING \t\t", "testworld", "       \t\t\t\t\t" };
+	char ii[7][50] = { "", "HELLOWORLD", "TeStInG", "12 \t 31,\ts$@$Does it work"
+						, "HIDD\0ENMEANING", "testworld", "" };
+	for (int n = 0; n < 7; n++)
+	{
+		i = ft_strtrim(arr[n]);
+		if (strcmp(i, ii[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n, i, ii[n]);
+	}
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
+void	test_strsplit(void)
+{
+	char *testname = "ft_strsplit";
+	int count = 0, len = 20, j = 0;
+	char **i;
+	char arr[7][50] = { "" // 0
+						, "    HELL  O WO R   LD" // 1
+						,"T e St   InG      " // 2
+						, "   12\t31, \ts$ @$  Does it work\t\t   " // 3
+						, "     HIDDEN MEAN ING \t\taat" // 4
+						, "testworld" // 5
+						, "       " }; // 6
+						
+	char arr1[5][50] = { "HELL", "O", "WO", "R", "LD"};
+	char arr2[4][50] = { "T", "e", "St", "InG" };
+	char arr3[6][50] = { "12\t31,", "\ts$", "@$", "Does", "it", "work\t\t" };
+	char arr4[4][50] = { "HIDDEN", "MEAN", "ING", "\t\taat" };
+
+
+
+
+	
+	char c = ' ';
+	i = ft_strsplit(arr[j], c); // j = 0
+	if (i[0] == NULL, i[1] == NULL)
+		count++;
+	else
+		printf("fail");///Fail
+	
+	j++; // j = 1
+	i = ft_strsplit(arr[j], c);
+	for (int n = 0; n < ft_countstrings(arr[j], c); n++)
+	{
+		if (strcmp(i[n], arr1[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n + 1, i[n], arr1[n]);
+	}
+	j++; // j = 2
+	i = ft_strsplit(arr[j], c);
+	for (int n = 0; n < ft_countstrings(arr[j], c); n++)
+	{
+		if (strcmp(i[n], arr2[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n + 6, i[n], arr2[n]);
+	}
+
+	j++; // j = 3
+	i = ft_strsplit(arr[j], c);
+	for (int n = 0; n < ft_countstrings(arr[j], c); n++)
+	{
+		if (strcmp(i[n], arr3[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n + 10, i[n], arr3[n]);
+	}
+
+
+	j++; // j = 4
+	i = ft_strsplit(arr[j], c);
+	for (int n = 0; n < ft_countstrings(arr[j], c); n++)
+	{
+		if (strcmp(i[n], arr4[n]) == 0)
+			count++;
+		else
+			sTESTFAIL(testname, n + 16, i[n], arr4[n]);
+	}
+
+	if (count == len)
+		TESTOK(testname, count, len);
+	else
+		TESTFAIL(testname, count, len);
+}
+
 int	main(void)
 {
 	
@@ -1115,22 +1502,21 @@ int	main(void)
 	test_strjoin();
 	test_strlcat();
 	test_strncat();
-
-
-	/*
 	test_strrchr();
 	test_strstr();
 	test_strnstr();
-
 	test_strmap();
 	test_strmapi();
-	
 	test_striter();
 	test_striteri();
-	
 	test_strsub();
 	test_strtrim();
 	test_strsplit();
+	
+	/*
+
+	
+	
 
 
 	test_putchar_fd();
@@ -1144,7 +1530,8 @@ int	main(void)
 	
 	bonuses.
 	*/
+	
 	// -I. libft_tests.h libft.h
-
+	//cat -e author && cat libft.h | grep "# include" > test.txt&& cat libft.h | grep "ft_" >> test.txt && cat libft.h | grep -A 5 "typedef" >> test.txt  && diff test.txt prototypelist.txt
 	return (0);
 }

@@ -8,7 +8,7 @@ SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c 
 		ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
 		ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 		ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstaddend.c ft_lstdelend.c \
-		ft_lstsize.c ft_dlstnew.c ft_dlstaddfront.c ft_dlstaddend.c ft_dlstdelfront.c
+		ft_lstsize.c ft_dlstnew.c ft_dlstaddfront.c ft_dlstaddend.c ft_dlstdelfront.c ft_countstrings.c
 
 SRCS = $(addprefix ./src/, $(SRC))
 FLAGS = -Wall -Wextra -Werror -I. libft_tests.h libft.h
