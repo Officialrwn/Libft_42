@@ -1416,10 +1416,10 @@ void	test_strsplit(void)
 	
 	char c = ' ';
 	i = ft_strsplit(arr[j], c); // j = 0
-	if (i[0] == NULL, i[1] == NULL)
+	if (i[0] == NULL && i[1] == NULL)
 		count++;
 	else
-		printf("fail");///Fail
+		sTESTFAIL(testname, 0, i[0], "(null)");
 	
 	j++; // j = 1
 	i = ft_strsplit(arr[j], c);
