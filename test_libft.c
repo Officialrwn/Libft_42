@@ -1308,7 +1308,6 @@ static void ft_decrementvalue(unsigned i, char *str)
 	}
 }
 
-
 void	test_striteri(void)
 {
 	char *testname = "ft_striteri";
@@ -1409,8 +1408,6 @@ void	test_strsplit(void)
 	char arr2[4][50] = { "T", "e", "St", "InG" };
 	char arr3[6][50] = { "12\t31,", "\ts$", "@$", "Does", "it", "work\t\t" };
 	char arr4[4][50] = { "HIDDEN", "MEAN", "ING", "\t\taat" };
-
-
 
 
 	
