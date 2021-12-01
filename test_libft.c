@@ -1308,7 +1308,6 @@ static void ft_decrementvalue(unsigned i, char *str)
 	}
 }
 
-
 void	test_striteri(void)
 {
 	char *testname = "ft_striteri";
@@ -1411,15 +1410,13 @@ void	test_strsplit(void)
 	char arr4[4][50] = { "HIDDEN", "MEAN", "ING", "\t\taat" };
 
 
-
-
 	
 	char c = ' ';
 	i = ft_strsplit(arr[j], c); // j = 0
-	if (i[0] == NULL, i[1] == NULL)
+	if (i[0] == NULL && i[1] == NULL)
 		count++;
 	else
-		printf("fail");///Fail
+		sTESTFAIL(testname, 0, i[0], "(null)");
 	
 	j++; // j = 1
 	i = ft_strsplit(arr[j], c);
