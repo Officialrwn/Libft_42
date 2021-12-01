@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:02:42 by marvin            #+#    #+#             */
-/*   Updated: 2021/11/29 20:02:42 by marvin           ###   ########.fr       */
+/*   Updated: 2021/12/01 13:44:22 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
 	
-	char buf[] = "";
-	char **arr = ft_strsplit(buf, ' ');
-	printf("%s\n", arr[0]);
-	printf("%s\n", arr[1]);
-	printf("%s\n", arr[2]);
-	
+
 	return (0);
 }
