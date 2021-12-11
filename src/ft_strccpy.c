@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/12/08 16:18:39 by leotran          ###   ########.fr       */
+/*   Created: 2021/12/06 15:55:38 by leotran           #+#    #+#             */
+/*   Updated: 2021/12/08 13:36:38 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strccpy(char *src, int c)
 {
-	unsigned int	i;
+	char	*str;
+	int		i;
 
 	i = 0;
-	while (i < n)
+	if (src == NULL || c == 0 || ft_strchr(src, c) == NULL)
+		return (0);
+	else
 	{
-		((char *)s)[i] = '\0';
-		i++;
+		while (src[i] != c)
+			i++;
+		str = ft_strsub(src, 0, i);
 	}
+	return (str);
 }

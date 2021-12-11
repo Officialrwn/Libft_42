@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:37:33 by leotran           #+#    #+#             */
-/*   Updated: 2021/12/02 18:26:33 by leotran          ###   ########.fr       */
+/*   Updated: 2021/12/03 11:20:50 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ long		imaxint1 = 2147483650;
 long long	iminint1 = -2147483650;
 int 		PRINTSUCCESS = 0;
 
+int	ft_countstrings(const char *s, char c);
 
 void	test_atoi(void)
 {

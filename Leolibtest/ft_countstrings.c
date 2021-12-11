@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_countstrings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/12/08 16:18:39 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/30 16:04:37 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/30 16:04:48 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_countstrings(const char *s, char c)
 {
-	unsigned int	i;
+	int	i;
+	int	x;
 
 	i = 0;
-	while (i < n)
+	x = 0;
+	while (s[i])
 	{
-		((char *)s)[i] = '\0';
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			x++;
 		i++;
 	}
+	if (x == 0)
+		x = 1;
+	return (x);
 }
