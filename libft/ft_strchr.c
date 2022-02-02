@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/16 14:17:11 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
+/*   Updated: 2021/12/20 14:59:56 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+char	*ft_strchr(const char *s, int c)
 {
-	if (s == NULL)
-		write(1, "null\n", 5);
-	ft_putstr(s);
-	ft_putchar('\n');
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while (str[i] && str[i] != c)
+		i++;
+	if (str[i] == c)
+		return (&str[i]);
+	return (0);
 }

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 13:46:34 by leotran           #+#    #+#             */
-/*   Updated: 2021/12/15 11:06:41 by leotran          ###   ########.fr       */
+/*   Created: 2021/11/05 15:13:31 by leotran           #+#    #+#             */
+/*   Updated: 2022/01/11 03:39:00 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+void	ft_putendl(char const *s)
 {
-	int		i;
-	char	*arr;
-
-	i = 0;
-	arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!arr || s == NULL)
-		return (NULL);
-	arr[len] = '\0';
-	while (len--)
+	if (s == NULL)
+		write(1, "\n", 1);
+	else
 	{
-		arr[i] = s[start];
-		i++;
-		start++;
+		ft_putstr(s);
+		ft_putchar('\n');
 	}
-	return (arr);
 }
