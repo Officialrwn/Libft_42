@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:46:30 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/17 14:01:12 by leotran          ###   ########.fr       */
+/*   Updated: 2022/02/02 13:52:40 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,19 @@ static int	countstrings(const char *s, char c)
 	return (x);
 }
 
-static void	*freearrays(char **arr, int x)
+static int	freearrays(char **arr, int x)
 {
 	while (x--)
 	{
 		if (arr[x])
 			free(arr[x]);
 	}
-	return (NULL);
+	free(arr);
+	arr = NULL;
+	return (0);
 }
 
-static void	*cptoarray(char **arr, const char *s, char c)
+static int	cptoarray(char **arr, const char *s, char c)
 {
 	t_var	i;
 
@@ -64,7 +66,7 @@ static void	*cptoarray(char **arr, const char *s, char c)
 		}
 		i.i++;
 	}
-	return (0);
+	return (1);
 }
 
 char	**ft_strsplit(const char *s, char c)
@@ -76,9 +78,8 @@ char	**ft_strsplit(const char *s, char c)
 		return (NULL);
 	wrdlen = countstrings(s, c);
 	arr = (char **)ft_memalloc(sizeof(char *) * wrdlen + 1);
-	if (arr)
+	if (arr && cptoarray(arr, s, c))
 	{
-		cptoarray(arr, s, c);
 		arr[wrdlen] = (char *)ft_memalloc(sizeof(char) * 1);
 		if (!arr[wrdlen])
 		{

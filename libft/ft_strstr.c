@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/13 18:32:54 by leotran          ###   ########.fr       */
+/*   Updated: 2022/02/02 13:16:44 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	int	j;
 
 	i = 0;
-	if (ft_strlen(needle) == 0 || ft_strcmp(haystack, needle) == 0)
+	if (needle[i] == '\0')
 		return ((char *)haystack);
 	while (haystack[i])
 	{

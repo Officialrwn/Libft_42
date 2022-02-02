@@ -6,7 +6,7 @@
 #    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 13:56:45 by cchen             #+#    #+#              #
-#    Updated: 2022/02/02 12:40:37 by leotran          ###   ########.fr        #
+#    Updated: 2022/02/02 12:47:40 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,5 +27,5 @@ VOGSPHERE=$(ls | sed -n '/intra-uuid/p')
 
 rm -rf ./${VOGSPHERE}/*
 cp ./$REPO_NAME/author ./${VOGSPHERE}
-cp ./$REPO_NAME/.gitignore ./${VOGSPHERE}
 cp ./$REPO_NAME/libft/* ./${VOGSPHERE}
+cp ./$REPO_NAME/.gitignore ./${VOGSPHERE}
