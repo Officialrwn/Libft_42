@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:46:30 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/02 13:52:40 by leotran          ###   ########.fr       */
+/*   Updated: 2022/02/06 07:39:16 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,41 @@ static int	freearrays(char **arr, int x)
 	return (0);
 }
 
+static int	count_letters(const char *s, int i, char c)
+{
+	int	j;
+
+	j = 0;
+	while (s[i + j + 1] != c && s[i + j + 1] != '\0')
+		j++;
+	return (j);
+}
+
 static int	cptoarray(char **arr, const char *s, char c)
 {
-	t_var	i;
+	int	i;
+	int	j;
+	int	x;
+	int	count;
 
-	i.i = 0;
-	i.x = 0;
-	while (s[i.i])
+	i = 0;
+	j = 0;
+	x = 0;
+	count = 0;
+	while (s[i])
 	{
-		i.count = 0;
-		if (s[i.i] != c)
+		count = 0;
+		if (s[i] != c)
 		{
-			i.j = i.i;
-			while (s[i.i + 1] != c && s[i.i + 1] != '\0')
-			{
-				i.count++;
-				i.i++;
-			}
-			arr[i.x] = ft_strsub(s, i.j, i.count + 1);
-			if (!arr[i.x])
-				return (freearrays(arr, i.x));
-			i.x++;
+			j = i;
+			count = count_letters(s, i, c);
+			i += count;
+			arr[x] = ft_strsub(s, j, count + 1);
+			if (!arr[x])
+				return (freearrays(arr, x));
+			x++;
 		}
-		i.i++;
+		i++;
 	}
 	return (1);
 }

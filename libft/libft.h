@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/01/11 03:41:07 by leo              ###   ########.fr       */
+/*   Updated: 2022/02/06 07:40:25 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ typedef struct s_dlist
 	struct s_dlist	*previous;
 	struct s_dlist	*next;
 }					t_dlist;
-
-typedef struct int_var
-{
-	int	i;
-	int	j;
-	int	x;
-	int	count;
-}				t_var;
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
