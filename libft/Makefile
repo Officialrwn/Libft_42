@@ -3,13 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
+#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/01/20 12:39:14 by leotran          ###   ########.fr        #
+#    Updated: 2022/02/06 07:02:08 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+MAKEFLAGS += --silent
 NAME = libft.a
 SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 		ft_itoa.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
@@ -25,16 +26,16 @@ SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c 
 
 SRCS = $(addprefix ./, $(SRC))
 FLAGS = -Wall -Wextra -Werror -I. -I includes
-O_FILES = $(SRCS:.c=.o)
+OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	gcc $(FLAGS) -c $(SRCS)
-	ar rc $(NAME) $(O_FILES)
+	ar rc $(NAME) $(OBJ)
 
 clean:
-	/bin/rm -f $(O_FILES)
+	/bin/rm -f $(OBJ)
 
 fclean: clean
 	/bin/rm -f $(NAME)
