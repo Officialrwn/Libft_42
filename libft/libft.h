@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/06 07:40:25 by leo              ###   ########.fr       */
+/*   Updated: 2022/02/08 01:26:23 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ int		ft_countstrings(const char *s, char c);
 char	*ft_strccpy(char *src, int c);
 int		ft_get_next_line(const int fd, char **line);
 void	ft_foreach(int *tab, int length, void (*f)(int));
+void	ft_put_ullong_nbr(unsigned long long n);
 
 #endif
