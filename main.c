@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 14:47:16 by leo               #+#    #+#             */
-/*   Updated: 2022/02/08 03:18:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/02/08 13:20:27 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int main (void)
 {
 	int a = 5;
-	printf("printf real: %p\n", &a);
-	printf("%lld\n", (long long) &a);
-	ft_itoa_base((long long) &a, 16);
-	ft_put_llong_nbr((long long) &a);
-	ft_putaddr((long long) &a);
+	//printf("printf real: %p\n", &a);
+	//printf("%lld\n", (long long) &a);
+	printf("%p\n", &a);
+	//ft_put_llong_nbr((long long) &a);
+	ft_putaddr(&a);
 	return (0);
 }
