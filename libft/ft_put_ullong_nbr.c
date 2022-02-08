@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_put_ullong_nbr.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:54:57 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/08 14:30:14 by leotran          ###   ########.fr       */
+/*   Updated: 2022/02/08 14:34:18 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_put_ullong_nbr(unsigned long long ullnum)
 {
-	long	num;
-	int		i;
-	int		count;
+	unsigned long long	num;
+	unsigned long long	i;
+	int					count;
 
-	num = n;
+	num = ullnum;
 	i = 1;
 	count = 0;
-	if (num < 0)
-	{
-		ft_putchar('-');
-		num *= -1;
-	}
 	while (i <= (num / 10))
 	{
 		i = i * 10;
