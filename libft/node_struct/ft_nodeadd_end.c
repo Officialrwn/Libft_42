@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_nodeadd_end.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:14:25 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/12 19:46:39 by leo              ###   ########.fr       */
+/*   Created: 2022/03/18 13:24:25 by leotran           #+#    #+#             */
+/*   Updated: 2022/03/18 13:39:52 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "node.h"
 
-void	ft_putchar(int c)
+void	ft_nodeadd_end(t_node **tail, t_node *node)
 {
-	write(1, &c, 1);
+	(*tail)->next = node;
+	node->prev = (*tail);
+	node->next = NULL;
+	(*tail) = node;
 }

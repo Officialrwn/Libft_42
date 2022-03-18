@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:14:25 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/12 19:46:39 by leo              ###   ########.fr       */
+/*   Created: 2022/03/14 22:23:06 by leo               #+#    #+#             */
+/*   Updated: 2022/03/16 19:09:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(int c)
+void	ft_lstswap(t_list **list)
 {
-	write(1, &c, 1);
+	t_list	*node;
+
+	node = (*list);
+	(*list) = (*list)->next;
+	node->next = (*list)->next;
+	(*list)->next = node;
 }

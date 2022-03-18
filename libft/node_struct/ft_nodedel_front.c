@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_nodedel_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:14:25 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/12 19:46:39 by leo              ###   ########.fr       */
+/*   Created: 2022/03/18 13:49:58 by leotran           #+#    #+#             */
+/*   Updated: 2022/03/18 14:00:27 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "node.h"
 
-void	ft_putchar(int c)
+void	ft_nodedel_front(t_node **node)
 {
-	write(1, &c, 1);
+	t_node	*current;
+
+	current = (*node);
+	(*node) = (*node)->next;
+	free(current);
+	current = NULL;
 }

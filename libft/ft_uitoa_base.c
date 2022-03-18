@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:49:29 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/06 14:04:15 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/02 13:30:40 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*convert_itoa_base(long long num, int base, char *arr, int flag)
+static char	*convert_uitoa_base(unsigned long long num, \
+int base, char *arr, int flag)
 {
-	long long	remainder;
-	int			i;
+	unsigned long long	remainder;
+	int					i;
 
-	i = ft_int_base_count(num, base);
+	i = ft_uint_base_count(num, base);
 	remainder = 0;
 	if (flag)
 		flag = 55;
@@ -25,9 +26,9 @@ static char	*convert_itoa_base(long long num, int base, char *arr, int flag)
 		flag = 87;
 	while (i-- > 0)
 	{
-		remainder = num % (long long)base;
+		remainder = num % (unsigned long long)base;
 		if (remainder > 9)
-			arr[i] = remainder + (long long)flag;
+			arr[i] = remainder + (unsigned long long)flag;
 		else
 			arr[i] = remainder + 48;
 		num /= base;
@@ -35,26 +36,17 @@ static char	*convert_itoa_base(long long num, int base, char *arr, int flag)
 	return (arr);
 }
 
-char	*ft_itoa_base(long long num, int base, int flag)
+char	*ft_uitoa_base(unsigned long long num, int base, int flag)
 {
 	char	*arr;
-	char	*head;
 	int		count;
-	int		sign;
 
-	sign = 1 - 2 * (num < 0);
-	count = ft_int_base_count(num, base);
-	arr = (char *)malloc(sizeof(char) * (count + 1));
-	head = arr;
+	count = ft_uint_base_count(num, base);
+	arr = (char *)malloc(sizeof(char) * count + 1);
 	if (arr)
 	{
 		arr[count] = '\0';
-		if (sign == -1)
-		{
-			*arr++ = '-';
-			num *= -1;
-		}
-		arr = convert_itoa_base(num, base, arr, flag);
+		arr = convert_uitoa_base(num, base, arr, flag);
 	}
-	return (head);
+	return (arr);
 }

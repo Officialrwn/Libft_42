@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/08 15:32:44 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/18 16:10:31 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 # define BUFF_SIZE 5
 # define FD_SIZE 8192
+# define MAX_LONG 
+# define MIN_LONG 
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -83,10 +85,10 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s);
 char	**ft_strsplit(const char *s, char c);
 char	*ft_itoa(int n);
-void	ft_putchar(char c);
+void	ft_putchar(int c);
 void	ft_putstr(const char *s);
 void	ft_putendl(const char *s);
-void	ft_putnbr(int n);
+void	ft_putnbr(long long n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(const char *s, int fd);
 void	ft_putendl_fd(const char *s, int fd);
@@ -101,6 +103,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void	ft_lstaddend(t_list **alst, t_list *new);
 void	ft_lstdelend(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstswap(t_list **list);
 
 int		ft_lstsize(t_list **lst);
 t_dlist	*ft_dlstnew(void const *content, size_t content_size);
@@ -111,10 +114,17 @@ int		ft_countstrings(const char *s, char c);
 char	*ft_strccpy(char *src, int c);
 int		ft_get_next_line(const int fd, char **line);
 void	ft_foreach(int *tab, int length, void (*f)(int));
-void	ft_put_llong_nbr(long long llnum);
-char	*ft_itoa_base(long long llnum, int base, int flag);
 void	ft_putaddr(void *arr);
-int		ft_digit_base_count(unsigned long long ullnum, int base);
-void	ft_put_ullong_nbr(unsigned long long ullnum);
+void	ft_put_u_nbr(unsigned long long n);
+int		ft_uint_base_count(unsigned long long num, int base);
+int		ft_int_base_count(long long num, int base);
+size_t	ft_float_count(long double num, int precision, int precision_flag);
+char	*ft_uitoa_base(unsigned long long num, int base, int flag);
+char	*ft_itoa_base(long long num, int base, int flag);
+char	*ft_ftoa(long double num, int precision_flag, int precision);
+char	*ft_strjoin_update(char const *s1, char const *s2);
+void	ft_del_lst_content(void *content, size_t contentsize);
+void	ft_swap(int *a, int *b);
+int		ft_printf(const char *format, ...);
 
 #endif

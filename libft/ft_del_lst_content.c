@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_del_lst_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:14:25 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/12 19:46:39 by leo              ###   ########.fr       */
+/*   Created: 2022/03/13 12:50:25 by leo               #+#    #+#             */
+/*   Updated: 2022/03/13 12:50:55 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(int c)
+void	ft_del_lst_content(void *content, size_t contentsize)
 {
-	write(1, &c, 1);
+	if (content != NULL)
+	{
+		free(content);
+		content = NULL;
+	}
+	contentsize = 0;
 }
